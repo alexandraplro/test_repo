@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alexandra Plazas Rocha — Full-Stack Developer (C#), Refactoring & AI Ethics</title>
+
+    <!-- Fonts: Playfair Display for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Polyfills for older browsers -->
+    <script>
+        if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector || function(s) {
+                var matches = (this.document || this.ownerDocument).querySelectorAll(s), i = matches.length;
+                while (--i >= 0 && matches.item(i) !== this) {}
+                return i > -1;
+            };
+        }
+        if (!Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do { if (el.matches && el.matches(s)) return el; el = el.parentElement || el.parentNode; } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+        if (!NodeList.prototype.forEach) NodeList.prototype.forEach = Array.prototype.forEach;
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="brand">
+            <a href="/" class="logo"><h1>MY PROJECT</h1></a>
+            <button class="nav-toggle" id="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
+        </div>
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+            <ul>
+                <li><a href="#" aria-current="page">Home</a></li>
+                <li><a href="#about-me">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Right-aligned standalone lead (below header) -->
+    <div class="hero-lead container">
+        <div class="hero-lead__inner">
+            <p>Hi, I'm Alexandra Plazas Rocha — a full-stack developer with a strategic communications background and a passion for building clean, scalable, and human-centered software.</p>
+        </div>
+    </div>
+
+
+        <section id="about-me" class="about-me">
+            <div class="about-copy">
+                <h2 id="about-me-heading">About Me</h2>
+
+                <div class="meta" aria-hidden="false">
+                    <span class="tag">C#</span>
+                    <span class="tag">.NET</span>
+                    <span class="tag">React</span>
+                    <span class="tag">Azure</span>
+                    <span class="tag">Accessibility</span>
+                </div>
+
+                <p>After more than a decade leading public affairs and media strategy across government, nonprofit, and multilateral sectors, I pivoted toward tech to deepen my problem-solving toolkit. I now specialize in C# development, code refactoring, and modular architecture, with a growing interest in AI ethics and digital governance.</p>
+
+                <p>My approach to development is grounded in clarity, iteration, and empathy — whether I'm optimizing a console-based task manager or collaborating on cross-functional teams. I thrive on feedback, love debugging, and believe that good code (like good storytelling) should be honest, elegant, and purposeful.</p>
+
+                <p>When I'm not coding, I'm writing memoir-style reflections, advocating for civil rights, or exploring how technology can support global justice. I'm fluent in English, Spanish, and French, and always eager to learn something new — especially if it challenges me to think deeper.</p>
+
+                <p>Let's build something meaningful.</p>
+            </div>
+
+            <aside class="about-photo card" aria-hidden="true">
+                <img src="images/placeholder-photo.svg" alt="Profile photo placeholder">
+            </aside>
+        </section>
+
+        <section id="projects" class="projects">
+            <h2 id="projects-heading">Projects</h2>
+
+            <div class="projects-grid" role="list" aria-label="Projects list">
+                <article class="project project-item" data-category="cli" aria-labelledby="proj-1-title" role="listitem">
+                    <figure>
+                        <img class="project-image" src="images/placeholder-taskmanager.svg" alt="Console Task Manager screenshot placeholder" />
+                        <div class="project-overlay" aria-hidden="true">
+                            <a class="overlay-btn primary" href="#" aria-label="View Console Task Manager details">View Details</a>
+                            <a class="overlay-btn" href="#" aria-label="Open live demo for Console Task Manager">Live Demo</a>
+                        </div>
+                        <figcaption>Task Manager — Console & CLI utilities</figcaption>
+                    </figure>
+                    <h3 id="proj-1-title">Console Task Manager</h3>
+                    <p>Modular C# console application for tracking tasks, with a focus on clean architecture, unit tests, and extensible command handling. Good for learning refactoring and test-driven development.</p>
+                    <p class="meta">Tech: C#, .NET, xUnit — <a href="#" aria-label="View Task Manager project">Details</a></p>
+                </article>
+
+                <article class="project project-item" data-category="refactor" aria-labelledby="proj-2-title" role="listitem">
+                    <figure>
+                        <img class="project-image" src="images/placeholder-refactor.svg" alt="Refactor project placeholder illustration" />
+                        <div class="project-overlay" aria-hidden="true">
+                            <a class="overlay-btn primary" href="#" aria-label="View Refactor project details">View Details</a>
+                            <a class="overlay-btn" href="#" aria-label="Open refactor project demo">Live Demo</a>
+                        </div>
+                        <figcaption>Refactoring &amp; Architecture</figcaption>
+                    </figure>
+                    <h3 id="proj-2-title">Refactor &amp; Modularize</h3>
+                    <p>Example project showcasing progressive refactoring of legacy code into a modular architecture, including separation of concerns, DI, and small, testable components.</p>
+                    <p class="meta">Tech: C#, SOLID, Dependency Injection — <a href="#" aria-label="View Refactor project">Details</a></p>
+                </article>
+
+                <article class="project project-item" data-category="ai-ethics" aria-labelledby="proj-3-title" role="listitem">
+                    <figure>
+                        <img class="project-image" src="images/placeholder-ai-ethics.svg" alt="AI ethics project placeholder illustration" />
+                        <div class="project-overlay" aria-hidden="true">
+                            <a class="overlay-btn primary" href="#" aria-label="View AI Ethics project details">View Details</a>
+                            <a class="overlay-btn" href="#" aria-label="Open AI ethics project demo">Live Demo</a>
+                        </div>
+                        <figcaption>Research &amp; Prototypes</figcaption>
+                    </figure>
+                    <h3 id="proj-3-title">AI Ethics Prototypes</h3>
+                    <p>Prototypes and notes exploring ethical AI patterns and governance considerations for public-sector applications. Includes documentation and small demos illustrating design decisions.</p>
+                    <p class="meta">Tech: prototypes, documentation — <a href="#" aria-label="View AI Ethics project">Details</a></p>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <h2 id="skills-heading">Skills</h2>
+            <ul class="skills-list" role="list">
+                <li>
+                    <!-- Icon: code brackets -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M8.7 16.3L3.4 12l5.3-4.3L7 6 1 12l6 6 1.7-1.7zM15.3 7.7L20.6 12l-5.3 4.3L17 18l6-6-6-6-1.7 1.7z"/>
+                    </svg>
+                    <span class="sr-only">Programming languages icon</span>
+                    Languages: C#, JavaScript (ES6+), SQL
+                </li>
+
+                <li>
+                    <!-- Icon: stacked layers for frameworks -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M12 3L1 8l11 5 11-5L12 3zm0 7.5L4.2 8 12 4.5 19.8 8 12 10.5zM2 13l10 5 10-5v2l-10 5L2 15v-2z"/>
+                    </svg>
+                    <span class="sr-only">Frameworks icon</span>
+                    Frameworks &amp; Libraries: .NET / ASP.NET Core, React
+                </li>
+
+                <li>
+                    <!-- Icon: architecture / nodes -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M6 6h4v4H6zM14 4h6v6h-6zM8 14h6v6H8zM6 10h12v2H6z"/>
+                    </svg>
+                    <span class="sr-only">Architecture icon</span>
+                    Architecture &amp; Practices: SOLID, modular architecture, refactoring, TDD
+                </li>
+
+                <li>
+                    <!-- Icon: test tube -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M7 2v6.6c0 .9.3 1.7.8 2.4L11 14v6h2v-6l3.2-2.9c.5-.7.8-1.5.8-2.4V2H7z"/>
+                    </svg>
+                    <span class="sr-only">Testing icon</span>
+                    Testing &amp; Tooling: xUnit, NUnit, Git, CI/CD
+                </li>
+
+                <li>
+                    <!-- Icon: cloud -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M19 18H7a4 4 0 010-8 5 5 0 019.9 1.2A3.5 3.5 0 0119 18z"/>
+                    </svg>
+                    <span class="sr-only">Cloud infrastructure icon</span>
+                    Cloud &amp; Infrastructure: Azure, Docker, containerization
+                </li>
+
+                <li>
+                    <!-- Icon: accessibility / person -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="currentColor" d="M12 2a2 2 0 110 4 2 2 0 010-4zm1 7h-2v6h2V9zm-6 9v2h10v-2a4 4 0 00-10 0z"/>
+                    </svg>
+                    <span class="sr-only">Accessibility icon</span>
+                    Other: Accessibility, UX-focused design, documentation, AI ethics
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="contact-grid">
+            <form id="contact-form" class="card" action="#" method="post" aria-describedby="contact-desc">
+                <h2 id="contact-heading">Contact</h2>
+                <p id="contact-desc">Use this form to get in touch. All fields marked with an asterisk (*) are required.</p>
+
+                <div class="form-row">
+                    <label for="contact-name">Name *</label>
+                    <input type="text" id="contact-name" name="name" required aria-required="true" autocomplete="name" />
+                </div>
+
+                <div class="form-row">
+                    <label for="contact-email">Email *</label>
+                    <input type="email" id="contact-email" name="email" required aria-required="true" autocomplete="email" />
+                </div>
+
+                <div class="form-row">
+                    <label for="contact-subject">Subject</label>
+                    <input type="text" id="contact-subject" name="subject" />
+                </div>
+
+                <div class="form-row">
+                    <label for="contact-message">Message *</label>
+                    <textarea id="contact-message" name="message" rows="6" required aria-required="true" minlength="10" aria-describedby="message-help"></textarea>
+                    <small id="message-help">Please provide a brief description of your inquiry (at least 10 characters).</small>
+                </div>
+
+                <div class="form-row">
+                    <button type="submit" class="btn-primary">Send Message</button>
+                </div>
+                <div id="contact-status" class="contact-status" role="status" aria-live="polite" aria-atomic="true"></div>
+            </form>
+            <aside class="social-block card" aria-labelledby="social-heading">
+                <h3 id="social-heading">Connect with me</h3>
+                <p class="text-muted">Find me on social media and follow my work.</p>
+                <ul class="social-list">
+                    <li>
+                        <a href="https://www.linkedin.com/in/alexandra-plazas-rocha/" target="_blank" rel="noopener">
+                            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle; margin-right:8px;">
+                                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0H12v2.12h.07c.6-1.14 2.07-2.34 4.26-2.34 4.56 0 5.4 3 5.4 6.9V24h-5V15.4c0-2.08-.04-4.76-2.9-4.76-2.9 0-3.34 2.26-3.34 4.6V24H7.5V8z" fill="currentColor" />
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Alexandra Plazas Rocha — Built with accessibility in mind.</p>
+    </footer>
+
+    <script>
+    // Small accessible nav toggle: updates aria-expanded and toggles .open on nav
+    (function () {
+        var btn = document.getElementById('nav-toggle');
+        var nav = document.getElementById('primary-nav');
+        if (!btn || !nav) return;
+
+        btn.addEventListener('click', function () {
+            var expanded = btn.getAttribute('aria-expanded') === 'true';
+            btn.setAttribute('aria-expanded', String(!expanded));
+            nav.classList.toggle('open');
+        });
+    })();
+    </script>
+
+    <script>
+    (function(){
+        /* Update project image alt text to be descriptive for screen readers. */
+        var altMap = {
+            "images/project-taskmanager.png": "Console Task Manager screenshot showing the command prompt, task list, and example commands",
+            "images/project-refactor.png": "Diagram illustrating legacy code being refactored into modular components and dependency flow",
+            "images/project-ai-ethics.png": "Prototype UI showing an AI ethics checklist and annotated governance notes"
+        };
+
+        document.addEventListener("DOMContentLoaded", function(){
+            var imgs = document.querySelectorAll("img");
+            imgs.forEach(function(img){
+                var src = img.getAttribute("src") || "";
+                src = src.replace(/^\.\//, "");
+                if(altMap[src]){
+                    img.setAttribute("alt", altMap[src]);
+                } else {
+                    var current = (img.getAttribute("alt") || "").trim();
+                    if(!current || current.length < 5){
+                        var caption = img.closest("article.project") && img.closest("article.project").querySelector("h3");
+                        var figcap = img.closest("figure") && img.closest("figure").querySelector("figcaption");
+                        var fallback = caption ? caption.textContent.trim() : (figcap ? figcap.textContent.trim() : "Project image");
+                        img.setAttribute("alt", fallback + " — decorative and contextual image");
+                    }
+                }
+            });
+        });
+    })();
+    </script>
+
+    <script>
+    // Contact form handler: client-side validation + accessible status messages
+    document.addEventListener('DOMContentLoaded', function () {
+        var form = document.getElementById('contact-form');
+        var status = document.getElementById('contact-status');
+        if (!form || !status) return;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            status.className = 'contact-status';
+            status.textContent = '';
+
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                status.classList.add('error');
+                status.textContent = 'Please complete the required fields highlighted above.';
+                return;
+            }
+
+            status.classList.add('success');
+            status.textContent = 'Thanks — your message has been sent. I will reply shortly.';
+
+            form.reset();
+            var name = document.getElementById('contact-name');
+            if (name) name.focus();
+        });
+    });
+    </script>
+    <!-- External interaction script -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+ 

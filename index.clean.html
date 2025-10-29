@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alexandra Plazas Rocha — Full‑Stack Developer (C#), Refactoring & AI Ethics</title>
+
+    <!-- Fonts for formal portfolio: Inter for headings, Roboto for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Small polyfills for older browsers to avoid console errors -->
+    <script>
+        // Element.matches polyfill
+        if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector || function(s) {
+                var matches = (this.document || this.ownerDocument).querySelectorAll(s), i = matches.length;
+                while (--i >= 0 && matches.item(i) !== this) {}
+                return i > -1;
+            };
+        }
+
+        // Element.closest polyfill
+        if (!Element.prototype.closest) {
+            Element.prototype.closest = function(s) {
+                var el = this;
+                do {
+                    if (el.matches && el.matches(s)) return el;
+                    el = el.parentElement || el.parentNode;
+                } while (el !== null && el.nodeType === 1);
+                return null;
+            };
+        }
+
+        // NodeList.forEach polyfill
+        if (!NodeList.prototype.forEach) {
+            NodeList.prototype.forEach = Array.prototype.forEach;
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="brand">
+            <a href="/" class="logo">
+                <h1>My Project</h1>
+            </a>
+
+            <button
+                class="nav-toggle"
+                id="nav-toggle"
+                aria-controls="primary-nav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="hamburger" aria-hidden="true"></span>
+            </button>
+        </div>
+
+        <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
+            <ul>
+                <li><a href="#" aria-current="page">Home</a></li>
+                <li><a href="#about-me">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="hero">
+            <h2>About Me</h2>
+            <p>Hi, I9m Alexandra Plazas Rocha 014 a full-stack developer with a strategic communications background and a passion for building clean, scalable, and human-centered software.</p>
+        </article>
+
+        <!-- content omitted for brevity in this clean copy; actual file will be restored from current working file -->
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 Alexandra Plazas Rocha — Built with accessibility in mind.</p>
+    </footer>
+
+</body>
+</html>

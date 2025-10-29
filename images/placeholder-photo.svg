@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <rect width="100%" height="100%" fill="#F6EEE6" />
+  <circle cx="300" cy="220" r="90" fill="#EADCF5" stroke="#C8A3F0" stroke-width="4"/>
+  <rect x="120" y="360" width="360" height="160" rx="12" fill="#EDE7F9" stroke="#C8A3F0" />
+  <text x="50%" y="540" font-family="Roboto, Arial, sans-serif" font-size="20" text-anchor="middle" fill="#6b556b">Upload your photo here</text>
+</svg>
