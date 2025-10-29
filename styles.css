@@ -23,6 +23,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 1rem; /* base font size */
+}
+
 html, body {
     height: 100%;
 }
@@ -31,7 +35,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 1.6;
     color: var(--text);
     font-weight: 500; /* slightly stronger for improved readability on dark bg */
@@ -80,6 +84,7 @@ a:hover {
     justify-content: space-between;
     padding: 1rem 1rem; /* ⬅️ adds horizontal padding */
     border-bottom: 1px solid rgba(0,0,0,0.06);
+    gap: 2rem;
 }
 
 
@@ -88,8 +93,10 @@ a:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     padding: 0 0.5rem;
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 /* vendor fallbacks for flex */
@@ -115,6 +122,14 @@ a:hover {
     display: flex;
     justify-content: flex-end;
     padding: 0;
+    flex-shrink: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 300ms ease-in-out;
+}
+
+.primary-nav.open {
+  max-height: 500px; /* adjust based on content height */
 }
 
 .primary-nav ul {
@@ -166,9 +181,9 @@ a:hover {
 
 /* Hamburger button + mobile nav at 768px breakpoint */
 @media (max-width: 768px) {
-    .site-header { flex-direction: column; align-items: stretch; }
+    .site-header { flex-direction: column; align-items: flex-start; }
     .site-header .brand { padding: 1rem 0 0.4rem 0; }
-    .primary-nav { display: none; }
+    .primary-nav { display: none; flex-direction: column; gap: 0.75rem;}
     .nav-toggle {
         display: inline-flex;
         background: transparent;
@@ -513,7 +528,7 @@ a:hover {
 @media (max-width: 640px) {
     /* Small phones */
     .container { padding: 0 0.75rem; }
-    body { font-size: 15px; }
+    body { font-size: 1rem; }
     .site-header .brand { padding: 1rem 0 0.4rem 0; }
     .logo h1 { font-size: 1.125rem; }
     .primary-nav { padding: 0.5rem 0; }
