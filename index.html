@@ -36,14 +36,14 @@
 
     <header class="site-header">
         <div class="brand">
-            <a href="/" class="logo"><h1>MY PROJECT</h1></a>
+            <a href="/" class="logo"><h1>MY PROFILE: ALEXANDRA PLAZAS ROCHA</h1></a>
             <button class="nav-toggle" id="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="hamburger" aria-hidden="true"></span>
             </button>
         </div>
         <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
             <ul>
-                <li><a href="#" aria-current="page">Home</a></li>
+                <li><a href="#main" aria-current="page">Home</a></li>
                 <li><a href="#about-me">About</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -51,26 +51,21 @@
             </ul>
         </nav>
     </header>
+    <main id="main">
 
     <!-- Right-aligned standalone lead (below header) -->
-    <div class="hero-lead container">
+    <section class="hero-lead">
         <div class="hero-lead__inner">
-            <p>Hi, I'm Alexandra Plazas Rocha — a full-stack developer with a strategic communications background and a passion for building clean, scalable, and human-centered software.</p>
+         <h1 class="hero-title">Alexandra Plazas Rocha</h1>
+            <p class="hero-subtitle">Full-Stack Developer (C#), Refactoring & AI Ethics</p>
         </div>
-    </div>
+    </section>
+
 
 
         <section id="about-me" class="about-me">
             <div class="about-copy">
-                <h2 id="about-me-heading">About Me</h2>
-
-                <div class="meta" aria-hidden="false">
-                    <span class="tag">C#</span>
-                    <span class="tag">.NET</span>
-                    <span class="tag">React</span>
-                    <span class="tag">Azure</span>
-                    <span class="tag">Accessibility</span>
-                </div>
+                <h2 id="about-me-heading">ABOUT ME</h2>
 
                 <p>After more than a decade leading public affairs and media strategy across government, nonprofit, and multilateral sectors, I pivoted toward tech to deepen my problem-solving toolkit. I now specialize in C# development, code refactoring, and modular architecture, with a growing interest in AI ethics and digital governance.</p>
 
@@ -82,11 +77,11 @@
             </div>
 
             <aside class="about-photo card" aria-hidden="true">
-                <img src="images/placeholder-photo.svg" alt="Profile photo placeholder">
+                <img src="images/Claudia Alexandra Plazas Rocha Picture.jpeg" alt="Profile photo">
             </aside>
         </section>
 
-        <section id="projects" class="projects">
+        <section id="projects" class="projects"></section>
             <h2 id="projects-heading">Projects</h2>
 
             <div class="projects-grid" role="list" aria-label="Projects list">
@@ -94,42 +89,42 @@
                     <figure>
                         <img class="project-image" src="images/placeholder-taskmanager.svg" alt="Console Task Manager screenshot placeholder" />
                         <div class="project-overlay" aria-hidden="true">
-                            <a class="overlay-btn primary" href="#" aria-label="View Console Task Manager details">View Details</a>
-                            <a class="overlay-btn" href="#" aria-label="Open live demo for Console Task Manager">Live Demo</a>
+                            <button class="overlay-btn primary" type="button" aria-label="View Console Task Manager details">View Details</button>
+                            <button class="overlay-btn" type="button" aria-label="Open live demo for Console Task Manager">Live Demo</button>
                         </div>
                         <figcaption>Task Manager — Console & CLI utilities</figcaption>
                     </figure>
                     <h3 id="proj-1-title">Console Task Manager</h3>
                     <p>Modular C# console application for tracking tasks, with a focus on clean architecture, unit tests, and extensible command handling. Good for learning refactoring and test-driven development.</p>
-                    <p class="meta">Tech: C#, .NET, xUnit — <a href="#" aria-label="View Task Manager project">Details</a></p>
+                    <p class="meta">Tech: C#, .NET, xUnit — <button class="meta-link" type="button" aria-label="View Task Manager project">Details</button></p>
                 </article>
 
                 <article class="project project-item" data-category="refactor" aria-labelledby="proj-2-title" role="listitem">
                     <figure>
                         <img class="project-image" src="images/placeholder-refactor.svg" alt="Refactor project placeholder illustration" />
                         <div class="project-overlay" aria-hidden="true">
-                            <a class="overlay-btn primary" href="#" aria-label="View Refactor project details">View Details</a>
-                            <a class="overlay-btn" href="#" aria-label="Open refactor project demo">Live Demo</a>
+                            <button class="overlay-btn primary" type="button" aria-label="View Refactor project details">View Details</button>
+                            <button class="overlay-btn" type="button" aria-label="Open refactor project demo">Live Demo</button>
                         </div>
                         <figcaption>Refactoring &amp; Architecture</figcaption>
                     </figure>
                     <h3 id="proj-2-title">Refactor &amp; Modularize</h3>
                     <p>Example project showcasing progressive refactoring of legacy code into a modular architecture, including separation of concerns, DI, and small, testable components.</p>
-                    <p class="meta">Tech: C#, SOLID, Dependency Injection — <a href="#" aria-label="View Refactor project">Details</a></p>
+                    <p class="meta">Tech: C#, SOLID, Dependency Injection — <button class="meta-link" type="button" aria-label="View Refactor project">Details</button></p>
                 </article>
 
                 <article class="project project-item" data-category="ai-ethics" aria-labelledby="proj-3-title" role="listitem">
                     <figure>
                         <img class="project-image" src="images/placeholder-ai-ethics.svg" alt="AI ethics project placeholder illustration" />
                         <div class="project-overlay" aria-hidden="true">
-                            <a class="overlay-btn primary" href="#" aria-label="View AI Ethics project details">View Details</a>
-                            <a class="overlay-btn" href="#" aria-label="Open AI ethics project demo">Live Demo</a>
+                            <button class="overlay-btn primary" type="button" aria-label="View AI Ethics project details">View Details</button>
+                            <button class="overlay-btn" type="button" aria-label="Open AI ethics project demo">Live Demo</button>
                         </div>
                         <figcaption>Research &amp; Prototypes</figcaption>
                     </figure>
                     <h3 id="proj-3-title">AI Ethics Prototypes</h3>
                     <p>Prototypes and notes exploring ethical AI patterns and governance considerations for public-sector applications. Includes documentation and small demos illustrating design decisions.</p>
-                    <p class="meta">Tech: prototypes, documentation — <a href="#" aria-label="View AI Ethics project">Details</a></p>
+                    <p class="meta">Tech: prototypes, documentation — <button class="meta-link" type="button" aria-label="View AI Ethics project">Details</button></p>
                 </article>
             </div>
         </section>
@@ -190,6 +185,28 @@
                     <span class="sr-only">Accessibility icon</span>
                     Other: Accessibility, UX-focused design, documentation, AI ethics
                 </li>
+                <li>
+                    <!-- Icon: terminal for CLI/DevOps -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M3 5h18v2H3zM3 19h18v-2H3zM3 9h6v6H3z"/></svg>
+                    DevOps: Docker, CI/CD (GitHub Actions), Azure DevOps
+                </li>
+                <li>
+                    <!-- Icon: code -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M8.7 16.3L3.4 12l5.3-4.3L7 6 1 12l6 6 1.7-1.7zM15.3 7.7L20.6 12l-5.3 4.3L17 18l6-6-6-6-1.7 1.7z"/></svg>
+                    Languages: TypeScript, C#, JavaScript (ES6+), SQL
+                </li>
+                <li>
+                    <!-- Icon: cog -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24"><path fill="currentColor" d="M12 8a4 4 0 100 8 4 4 0 000-8z"/></svg>
+                    Systems: Cloud architecture, containerization, monitoring
+                </li>
+                <li>
+                 <!-- Icon: wrench for tooling and optimization -->
+                    <svg class="skill-icon" aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M22.7 19.3l-6.6-6.6c.6-1.1.9-2.3.9-3.6 0-4.4-3.6-8-8-8-1.3 0-2.5.3-3.6.9l6.6 6.6c-.6 1.1-.9 2.3-.9 3.6 0 4.4 3.6 8 8 8 1.3 0 2.5-.3 3.6-.9z"/></svg></svg>
+                    <span class="sr-only">Optimization icon</span>
+                    Code Quality &amp; Optimization: performance tuning, clean code, static analysis, maintainability
+                </li>
             </ul>
         </section>
 
@@ -246,21 +263,7 @@
     <footer class="site-footer">
         <p>&copy; 2025 Alexandra Plazas Rocha — Built with accessibility in mind.</p>
     </footer>
-
-    <script>
-    // Small accessible nav toggle: updates aria-expanded and toggles .open on nav
-    (function () {
-        var btn = document.getElementById('nav-toggle');
-        var nav = document.getElementById('primary-nav');
-        if (!btn || !nav) return;
-
-        btn.addEventListener('click', function () {
-            var expanded = btn.getAttribute('aria-expanded') === 'true';
-            btn.setAttribute('aria-expanded', String(!expanded));
-            nav.classList.toggle('open');
-        });
-    })();
-    </script>
+    <!-- nav toggle handled by external script.js to avoid double-binding -->
 
     <script>
     (function(){

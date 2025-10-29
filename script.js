@@ -63,12 +63,14 @@
     var modalCaption = null;
     var modalClose = null;
 
+    var _previousActive = null;
     function createModal() {
       if (modal) return;
       modal = document.createElement('div');
       modal.className = 'lightbox-modal';
       modal.setAttribute('role','dialog');
       modal.setAttribute('aria-modal','true');
+      modal.setAttribute('tabindex','-1');
       modal.innerHTML = "<div class=\"lightbox-inner\">"+
         "<button class=\"lightbox-close\" aria-label=\"Close\">&times;</button>"+
         "<img class=\"lightbox-image\" alt=\"\">"+
@@ -78,22 +80,38 @@
       modalImg = modal.querySelector('.lightbox-image');
       modalCaption = modal.querySelector('.lightbox-caption');
       modalClose = modal.querySelector('.lightbox-close');
+
+      // Click outside or on close button closes modal
       modal.addEventListener('click', function (e) {
         if (e.target === modal || e.target === modalClose) closeModal();
       });
-      document.addEventListener('keydown', function (e) {
-        if (!modal || modal.style.display !== 'block') return;
-        if (e.key === 'Escape') closeModal();
-      });
+
+      // Focus-trap: handle Tab inside modal
+      modal._trap = function (e) {
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        // focusable selector
+        var focusable = modal.querySelectorAll('a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])');
+        if (!focusable || focusable.length === 0) { e.preventDefault(); return; }
+        focusable = Array.prototype.slice.call(focusable);
+        var first = focusable[0], last = focusable[focusable.length - 1];
+        if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      };
     }
 
     function openModal(src, caption) {
       createModal();
+      _previousActive = document.activeElement;
       modalImg.src = src;
       modalImg.alt = caption || '';
       modalCaption.textContent = caption || '';
       modal.style.display = 'block';
       document.body.classList.add('no-scroll');
+      // attach key handler to modal for trapping focus and escape
+      modal.addEventListener('keydown', modal._trap);
+      // move focus to close button for accessibility
+      if (modalClose) modalClose.focus();
     }
 
     function closeModal() {
@@ -102,6 +120,10 @@
       document.body.classList.remove('no-scroll');
       modalImg.src = '';
       modalCaption.textContent = '';
+      // remove trap handler and restore focus
+      modal.removeEventListener('keydown', modal._trap);
+      try { if (_previousActive && typeof _previousActive.focus === 'function') _previousActive.focus(); } catch (e) { /* ignore */ }
+      _previousActive = null;
     }
 
     // Attach lightbox to project images
@@ -113,6 +135,11 @@
         var cap = fig && fig.querySelector('figcaption') ? fig.querySelector('figcaption').textContent : img.alt || '';
         openModal(src, cap);
       });
+    });
+
+    // Make overlay buttons behave like controls (prevent event propagation)
+    $$('.overlay-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) { e.stopPropagation(); /* future: open details */ });
     });
 
     // Project click opens a popup window (small) with a focused view
@@ -134,7 +161,7 @@
         }
         win.document.title = title;
         win.document.body.style.fontFamily = "Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial";
-        win.document.body.innerHTML = '<div style="padding:20px"><h2>'+title+'</h2>' + content + '<p><a href="#" onclick="window.close();return false;">Close</a></p></div>';
+        win.document.body.innerHTML = '<div style="padding:20px"><h2>'+title+'</h2>' + content + '<p><button onclick="window.close();return false;">Close</button></p></div>';
       });
     });
 

@@ -6,13 +6,17 @@
     --header-bg: #F4F2F8;     /* light header/footer background (very pale lavender) */
     --card-bg: #16121C;       /* card background stays dark for content cards */
     --beige: #F6EEE6;         /* light beige for inputs */
-    --text: #0B0B0D;          /* dark text for header/footer */
-    --muted: #6B6B76;         /* muted dark gray */
+    --text: #F6F3F9;          /* light body text for dark page background */
+    --header-text: #0B0B0D;   /* dark text for header/footer */
+    --muted: #BFBCC3;         /* legacy muted token (prefer explicit tokens below) */
+    --muted-on-dark: #BFBCC3; /* muted light tone for secondary text displayed on dark backgrounds/cards */
+    --muted-on-light: #6B6B76; /* muted darker tone for secondary text displayed on light backgrounds (header/footer) */
     --accent: #7461AE;        /* darker violet - improved contrast on light header */
     --accent-2: #B35A6A;      /* more formal pink for CTA */
     --focus-ring: rgba(167,139,250,0.18);
     --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
     --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    --content-max-width: 72rem; /* max width for main content areas */
 }
 
 * {
@@ -30,14 +34,17 @@ body {
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
+    font-weight: 500; /* slightly stronger for improved readability on dark bg */
     background-color: var(--page-bg);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
 
+
 /* Make media elements responsive by default */
-img, picture, video, canvas, iframe {
+/* Make media elements responsive by default */
+img, picture, video, canvas, svg {
     max-width: 100%;
     height: auto;
     display: block;
@@ -47,32 +54,34 @@ img, picture, video, canvas, iframe {
 svg { max-width: 100%; height: auto; display: block; }
 
 a {
-    color: #0366d6;
+         color: var(--muted-on-dark); /* link color tuned for dark page */
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+         color: var(--muted-on-dark);
 }
 /* Layout and components for index.html */
 
 .container {
     max-width: 72rem;
     margin: 0 auto;
+    /* Ensure body copy in the main container uses the primary, high-contrast text color */
+    color: var(--text);
     padding: 0 1rem;
 }
 
 /* Header / nav */
 .site-header {
-    /* Left-aligned brand with right-side nav for desktop (light background) */
     background: var(--header-bg);
-    color: var(--text);
+    color: var(--header-text);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 0;
+    padding: 1rem 1rem; /* ⬅️ adds horizontal padding */
     border-bottom: 1px solid rgba(0,0,0,0.06);
 }
+
 
 /* Brand area: logo (left) and optional tagline; laid out in a row on larger screens */
 .site-header .brand {
@@ -91,14 +100,14 @@ a:hover {
     font-family: var(--font-heading);
     font-weight: 800;
     font-size: 2rem; /* larger title */
-    color: var(--text);
+    color: var(--header-text);
     letter-spacing: 0.02em;
     text-transform: uppercase;
 }
 
 .site-header .tagline {
     margin-top: .4rem;
-    color: var(--muted);
+    color: var(--muted-on-light);
     font-size: .95rem;
 }
 
@@ -121,7 +130,7 @@ a:hover {
 .primary-nav ul { display: -webkit-flex; display: -ms-flexbox; }
 
 .primary-nav a {
-    color: var(--text);
+    color: var(--header-text);
     text-decoration: none;
     padding: .45rem .65rem;
     border-radius: 8px;
@@ -227,28 +236,43 @@ a:hover {
     .hamburger, .hamburger::before, .hamburger::after { transition: none; }
 }
 
-/* Right-aligned lead below header */
 .hero-lead {
-    margin: 0.75rem 0;
+    margin: 2rem auto 1rem auto;
+    text-align: center;
 }
+
 .hero-lead .hero-lead__inner {
-    max-width: 420px;
-    margin-left: auto; /* push to the right */
-    background: transparent;
-    color: var(--text);
-    padding: 0.25rem 0.5rem;
-    text-align: right;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    background:  #16121C;
+    color: lightsteelblue;
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 26px rgba(2,6,23,0.06);
+    text-align: center;
 }
 
-.social-list svg { color: var(--text); }
-
-/* Hero / lead */
-.hero {
-    background: linear-gradient(90deg, rgba(3,102,214,0.06), transparent);
-    border-radius: .5rem;
-    padding: 1.25rem;
-    margin: 1rem 0;
+/* Separate styles for title and subtitle */
+.hero-lead .hero-title,
+.hero-lead .hero-subtitle {
+    font-size: clamp(1.25rem, 4vw, 1.875rem); /* medium and responsive */
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0;
+    font-family: var(--font-heading);
+    text-align: center;
 }
+
+/* Optional: accent color for subtitle */
+.hero-lead .hero-title {
+    color: lightsteelblue; /* violet tone for "WELCOME!" */
+}
+
+.hero-lead .hero-subtitle {
+    color: #E6F0FF; /* light-blue tone for name and role */
+    margin-top: 0.5rem;
+}
+
 
 /* Projects card layout */
 .projects-grid {
@@ -258,6 +282,7 @@ a:hover {
     margin: 1rem 0;
     align-items: stretch;
     justify-content: space-between;
+    padding: 1rem 0; /* add section padding like contact */
 }
 
 /* vendor fallbacks for flex */
@@ -275,6 +300,7 @@ a:hover {
     flex-direction: column;
     gap: 0.75rem;
     min-width: 220px;
+    max-width: var(--content-max-width);
 }
 
 /* vendor fallbacks for flex */
@@ -358,6 +384,17 @@ a:hover {
     outline-offset: 2px;
 }
 
+/* meta link button used in project meta */
+.meta .meta-link {
+    background: none;
+    border: none;
+    color: var(--accent);
+    text-decoration: underline;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .project-overlay { transition: none; transform: none; }
 }
@@ -370,12 +407,12 @@ a:hover {
 
 .project p {
     margin: 0;
-    color: var(--muted);
+    color: var(--muted-on-dark);
     flex-grow: 1; /* push meta/links to bottom */
 }
 
 .project .meta {
-    color: var(--muted);
+    color: var(--muted-on-dark);
     font-size: 0.9rem;
 }
 
@@ -396,6 +433,7 @@ a:hover {
     padding: 0;
     margin: 0;
     list-style: none;
+    padding: 0.5rem 0; /* add padding to match contact/social sections */
 }
 
 .skills-list li {
@@ -449,10 +487,27 @@ a:hover {
 
 /* Spacing between sections */
 .skills { margin-top: 2rem; margin-bottom: 1.25rem; }
-.contact { margin-top: 2rem; }
+.contact {margin-top: 2rem; }
+
+/* Projects and section headings */
+#projects-heading {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    letter-spacing: 0.04em;
+    margin: 0 0 0.75rem 0;
+    text-transform: uppercase;
+}
+
+.projects, .skills, .contact, .about-me { 
+    padding: 0 1rem; 
+    max-width: var(--content-max-width);
+}
+
+#projects-heading {
+    padding-left: 1.5rem; /* align with page padding and add extra gap */
+}
 
 /* Footer centering */
-.site-footer p { text-align: center; color: var(--muted); }
+.site-footer p { text-align: center; }
 
 /* Responsive breakpoints: small, medium, large */
 @media (max-width: 640px) {
@@ -491,12 +546,12 @@ a:hover {
     .primary-nav ul { gap: 1.25rem; }
     .projects-grid { gap: 1.5rem; }
     .project { flex: 1 1 30%; }
-    .about-me { max-width: 68ch; padding: 1.5rem; }
+    .about-me { max-width: calc(520px + 420px + 1.5rem + 3rem); padding: 1.5rem; }
 }
 
 /* Main wrapper */
 main {
-    max-width: 60rem;
+    max-width: 75rem; /* 1200px */
     margin: 0 auto;
 }
 
@@ -542,7 +597,7 @@ select {
     width: 100%;
     padding: .5rem .75rem;
     border: 1px solid rgba(35,18,49,0.08);
-    border-radius: .375rem;
+    border-radius: .5rem;
     background: var(--beige); /* light background for inputs */
     color: #0b0b0d; /* dark text inside inputs */
     font: inherit;
@@ -551,7 +606,7 @@ select {
 button, .btn-primary {
     display: inline-block;
     padding: .55rem .9rem;
-    border-radius: .375rem;
+    border-radius: .5rem;
     background: var(--accent-2);
     color: #ffffff;
     border: none;
@@ -567,16 +622,17 @@ button.secondary {
 }
 
 /* Utilities */
-.text-muted { color: var(--muted); font-size: .9rem; }
+.text-muted { color: var(--muted-on-dark); font-size: .9rem; }
 .center { text-align: center; }
 .spaced { margin-top: 1rem; }
 
 /* Footer */
 .site-footer {
     margin-top: 2rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255,255,255,0.03);
-    color: var(--muted);
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    background: var(--header-bg); /* match header/nav background */
+    color: var(--header-text);
     font-size: .9rem;
 }
 
@@ -602,12 +658,12 @@ button.secondary {
 .contact .contact-grid {
     display: grid;
     /* two equal, narrower blocks centered with space on both sides */
-    grid-template-columns: repeat(2, 420px);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1rem;
     justify-content: center; /* center the two-column group within the section */
     align-items: start;
     margin: 0 auto;
-    max-width: 100%;
+    width: 100%;
 }
 
 .contact .social-block h3 {
@@ -639,29 +695,76 @@ button.secondary {
     .contact form.card { order: 1; }
 }
 
-/* About section: two equal blocks (text + photo), centered */
+/* About section: two equal centered blocks (text + photo) */
 .about-me {
-    margin: 1.5rem auto;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border: 1px solid rgba(0,0,0,0.06);
-    border-radius: 10px;
+    margin: 2rem auto 0 auto; /* more space above, no extra below if hero-lead has margin */
+    padding: 2rem 1.5rem;     /* more generous padding for balance with hero-lead */
+    background: ghostwhite; /* light container */
+    border-radius: 12px;
     display: grid;
-    grid-template-columns: repeat(2, 420px);
-    gap: 1.25rem;
-    justify-content: center; /* center the two blocks with space on both sides */
-    max-width: 100%;
+    grid-template-columns: 3fr 2fr; /* fixed layout for desktop */
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: start;
+    max-width: calc(520px + 420px + 1.5rem + 3rem);
+    box-shadow: 0 8px 26px rgba(2,6,23,0.06); /* subtle depth */
 }
 
+/* Grid placement */
 .about-me .about-copy { grid-column: 1; }
 .about-me .about-photo { grid-column: 2; }
 
-.about-me .about-copy h2 { text-align: left; margin-top: 0; }
-
-@media (max-width: 768px) {
-    .about-me { grid-template-columns: 1fr; }
-    .about-me .about-photo { order: -1; }
+/* Heading and text */
+.about-me .about-copy h2 {
+    text-align: left;
+    margin-top: 0;
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    color: var(--header-text); 
 }
+
+.about-me p {
+    color: var(--text); /* match dark theme text */
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* Photo card styling */
+.about-me .about-photo.card {
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+
+.about-me .about-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 0 4px var(--focus-ring);
+}
+
+/* Responsive fallback for smaller screens */
+@media (max-width: 900px) {
+    .about-me {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-me .about-copy,
+    .about-me .about-photo {
+        grid-column: auto;
+    }
+
+    .about-me .about-photo {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .about-me .about-copy h2 {
+        text-align: center;
+    }
+}
+
 
 /* Responsive adjustments */
 @media (min-width: 768px) {
@@ -674,35 +777,50 @@ button.secondary {
     .hero { padding: 1.5rem; }
 }
 
-/* About Me section — prominent, readable, and sleek for Modern Dark theme */
+/* About Me section — use light container with dark text and fixed columns */
 .about-me {
     margin: 1.5rem auto;
-    padding: 1.5rem;
-    max-width: 60ch; /* keep line length readable */
-    background: var(--card-bg);
+    padding: 2rem;
+    background: var(--header-bg); /* light container */
     border: 1px solid rgba(0,0,0,0.06);
     border-radius: 10px;
     display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 1.25rem;
+    grid-template-columns: 1fr 1fr; /* fixed text + photo columns */
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: start;
+    max-width: var(--content-max-width);
 }
 
-.about-me h2 {
-    /* align heading with the text column (not centered across the photo) */
+
+/* Section headings: keep About, Projects, Skills, Contact consistent */
+section h2,
+.about-me h2,
+#projects-heading,
+#skills-heading,
+#contact-heading {
     text-align: left;
     grid-column: 1;
     font-family: var(--font-heading);
+    text-transform: uppercase;
     font-size: clamp(1.25rem, 2.2vw, 1.6rem);
     margin-bottom: 0.5rem;
+    color: var(--header-text);
+}
+
+/* Make Projects, Skills and Contact headings lighter (on dark page they should be light) */
+#projects-heading,
+#skills-heading,
+#contact-heading {
     color: var(--text);
 }
 
 .about-me .intro {
-    font-size: 1.125rem; /* slightly larger for the lead paragraph */
+    font-size: 1.125rem;
     line-height: 1.75;
     margin: 0 auto 1rem auto;
-    color: var(--text);
-    text-align: left; /* left-align body text for readability */
+    color: var(--header-text);
+    text-align: left;
 }
 
 .about-photo img { display: block; width: 100%; height: auto; object-fit: cover; border-radius: 8px; border: 1px solid rgba(0,0,0,0.06); background: var(--beige); }
@@ -714,7 +832,7 @@ button.secondary {
 
 .about-me p {
     margin: 0 0 1rem 0;
-    color: var(--muted); /* slightly softer for body copy */
+    color: var(--header-text);
     font-size: 1rem;
     line-height: 1.7;
 }
@@ -733,7 +851,7 @@ button.secondary {
 .about-me .meta .tag {
     padding: 0.35rem 0.6rem;
     background: rgba(255,255,255,0.02);
-    color: var(--muted);
+    color: var(--header-text); /* darker for tag labels */
     border-radius: 999px;
     font-size: 0.875rem;
 }
@@ -742,4 +860,7 @@ button.secondary {
     .about-me { padding: 1rem; margin: 1rem; }
     .about-me .intro { font-size: 1rem; text-align: left; }
 }
+
+
+
 
