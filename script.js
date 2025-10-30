@@ -22,7 +22,7 @@
     if (btn) btn.addEventListener('click', toggleMenu);
 
     // Smooth scrolling for internal links
-    $$("a[href^='#']").forEach(function (a) {
+    document.querySelectorAll("a[href^='#']").forEach(function (a) {
       var href = a.getAttribute('href');
       if (!href || href === '#') return;
       a.addEventListener('click', function (e) {
